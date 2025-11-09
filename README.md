@@ -31,18 +31,19 @@ Here are some of the main insights from the analysis:
 
 ## How to Run This Project
 
-This project was built using R and RStudio.
+This project uses the `{renv}` package to ensure complete reproducibility. To run it, follow these steps:
 
-1.  **Prerequisites:** You need to have R and RStudio installed.
-2.  **Clone the repository:** `git clone https://github.com/Krasper707/HouseMD-IMDB-Analysis.git`
-3.  **Install packages:** Open the `.Rproj` file in RStudio. The following packages are required. You can install them by running this command in the console:
+1.  **Clone the repository:** `git clone https://github.com/Krasper707/HouseMD-IMDB-Analysis.git`
+2.  **Open the Project:** Open the `HouseMD_Analysis.Rproj` file in RStudio. The project should open, and you may see a message in the console indicating that `renv` is active.
+3.  **Restore the Environment:** In the RStudio console, run the following command:
     ```r
-    install.packages(c("tidyverse", "rvest"))
+    renv::restore()
     ```
+    `renv` will read the `renv.lock` file and automatically install the *exact* versions of all the required packages that were used to create this analysis. This may take a few minutes the first time.
 4.  **Run the scripts in order:**
-    *   `01_scrape_all_seasons.R`: This script will scrape all the raw data from IMDb. **(Note: This will take several minutes to run)**.
-    *   `02_clean_and_process_data.R`: This cleans the raw data and creates the analysis-ready files.
-    *   `03_analysis_and_visualization.Rmd`: Open this file and click "Knit" to generate the final HTML report with all plots.
+    *   `R/01_scrape_all_seasons.R`: You can run this to re-scrape the data from scratch. **(Note: This is optional, as the clean data is already provided in the `data` folder)**.
+    *   `R/02_clean_and_process_data.R`: Run this to re-process the raw data.
+    *   Open `03_analysis_and_visualization.Rmd` and click "Knit" to generate the final report.
 
 ---
 
